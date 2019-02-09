@@ -8,7 +8,7 @@
 |mail|string|null: false|
 
 ### Association
-- has_many :groups
+- has_many :groups, through: members
 - has_many :messeges
 - has_many :members
 
@@ -19,14 +19,15 @@
 |name|text|null: false, unique: true|
 
 ### Association
-- belongs_to :user
+- has_many :user, through: members
 - has_many :messeges
+- has_many :members
 
 ## members table
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
