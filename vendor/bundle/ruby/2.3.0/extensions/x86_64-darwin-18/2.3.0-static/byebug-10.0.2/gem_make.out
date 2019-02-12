@@ -1,0 +1,19 @@
+current directory: /Users/genius/projects/chat-space/vendor/bundle/ruby/2.3.0/gems/byebug-10.0.2/ext/byebug
+/Users/genius/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20190209-3415-1jfrzuv.rb extconf.rb
+creating Makefile
+
+current directory: /Users/genius/projects/chat-space/vendor/bundle/ruby/2.3.0/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/genius/projects/chat-space/vendor/bundle/ruby/2.3.0/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR="
+compiling locker.c
+compiling byebug.c
+compiling context.c
+compiling breakpoint.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/genius/projects/chat-space/vendor/bundle/ruby/2.3.0/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20190209-3415-1w8hr27/byebug
