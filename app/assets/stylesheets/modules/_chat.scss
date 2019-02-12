@@ -1,0 +1,103 @@
+.chat {
+  width: calc(100% - 300px);
+  .header {
+    box-sizing: border-box;
+    height: 100px;
+    padding: 0 40px;
+    border-bottom: solid 1px #EEE;
+
+    .left-header {
+      float: left;
+      &__headline {
+        margin-top: 35px;
+        color: $gray_dark;
+        font-size: 20px;
+      }
+      &__members {
+        display: flex;
+        margin-top: 15px;
+        color: $gray_light;
+        font-size: 12px;
+        .member {
+          display: inline-block;
+          padding-right: 5px;
+        }
+      }
+    }
+    .right-header {
+      height: 40px;
+      margin-top: 28px;
+      padding: 0 20px;
+      float: right;
+      color: $blue_light;
+      line-height: 40px;
+      border: solid 1px $blue_light;
+    }
+  }
+
+  .messages {
+    box-sizing: border-box;
+    background-color: #AAA;
+    height: calc(100% - 24px - 100px - 90px);
+    padding: 46px 40px 0;
+    .message {
+      .upper-message {
+        display: flex;
+        &__user-name {
+          color: $gray_blue;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        &__date {
+          color: $gray_light;
+          font-size: 12px;
+          padding-left: 10px;
+        }
+      }
+      .lower-message {
+        margin-top: 10px;
+        &__content {
+          margin-bottom: 40px;
+          color: $gray_blue;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .form {
+    box-sizing: border-box;
+    background-color: #DDD;
+    height: 90px;
+    padding: 20px 40px 20px 40px;
+    &__message {
+      width: calc(100% - 150px);
+      height: 50px;
+      float: left;
+      border: none;
+    }
+    &__mask {
+      background-color: $white;
+      height: 50px;
+      padding-right: 10px;
+      float: left;
+      &__image {
+        font-size: 20px;
+        line-height: 50px;
+      }
+      .hidden {
+        display: none;
+      }
+    }
+     &__submit {
+      background-color: $blue_light;
+      height: 50px;
+      margin-left: 15px;
+      padding: 0 30px;
+      float: right;
+      color: $white;
+      font-size: 16px;
+      border: none;
+    }
+  }
+}
