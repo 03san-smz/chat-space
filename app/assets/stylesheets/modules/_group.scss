@@ -42,7 +42,7 @@
 
   &__field {
     margin-top: 30px;
-    @include clearfix
+    @include clearfix;
     &--left {
       float: left;
       width: 30%;
@@ -83,7 +83,7 @@
   line-height: 50px;
   font-size: 14px;
   border-bottom: 1px solid #ddd;
-  @include clearfix
+  @include clearfix;
   &__name {
     float: left;
   }
