@@ -14,7 +14,7 @@
         font-size: 20px;
       }
       &__members {
-        display: flex;
+        @include flexbox;
         margin-top: 15px;
         color: $gray_light;
         font-size: 12px;
@@ -32,6 +32,10 @@
       color: $blue_light;
       line-height: 40px;
       border: solid 1px $blue_light;
+      &__button {
+        color: $blue_light;
+        text-decoration: none;
+      }
     }
   }
 
