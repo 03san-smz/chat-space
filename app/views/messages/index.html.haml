@@ -4,50 +4,22 @@
     .header
       .left-header
         .left-header__headline
-          グループ名
+          = @group.name
         %ul.left-header__members
           %li.member
-            メンバー名
-          %li.member
-            メンバー名
-          %li.member
-            メンバー名
+            - @group.members.each do |members|
+              = members.user.name
       .right-header
         .right-header__button
-          Edit
+          = link_to "Edit", "edit"
     .messages
-      .message
-        .upper-message
-          .upper-message__user-name
-            メンバー名
-          .upper-message__date
-            2019/00/00(Sat) 00:00:00
-        .lower-meesage
-          .lower-message__content
-            メッセージ
-      .message
-        .upper-message
-          .upper-message__user-name
-            メンバー名
-          .upper-message__date
-            2019/00/00(Sat) 00:00:00
-        .lower-meesage
-          .lower-message__content
-            メッセージ
-      .message
-        .upper-message
-          .upper-message__user-name
-            メンバー名
-          .upper-message__date
-            2019/00/00(Sat) 00:00:00
-        .lower-meesage
-          .lower-message__content
-            メッセージ
+      = render @messages
+
     .form
-      %form
-        %input.form__message{placeholder: "  type a message"}
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: "form__message", placeholder: "type a message"
         .form__mask
-          %label.form__mask__image
+          = f.label :image, class: "form__mask__image" do
             = fa_icon "picture-o", class: "icon"
-            %input.hidden{type: "file"}
-        %input.form__submit{type: "submit", value: "Send"}
+            = f.file_field :image, class: "hidden"
+        = f.submit "Send", class: "form__submit"
