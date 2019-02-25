@@ -39,13 +39,11 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $(".messages").append(html);
-      $(".form__message").val("");
-      $(".form__submit").prop("disabled", false);
+      $(".form__message")[0].reset();
       scroll()
     })
     .fail(function(){
       alert("error");
-      $(".form__submit").prop("disabled", false);
     })
   })
 })
