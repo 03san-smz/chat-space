@@ -17,12 +17,12 @@ $(function(){
                 </div>`
     return html;
   }
-
   function scroll(){
-    $(".messages").animate({scrollTop: $(".massage")[0].scrollHeight});
+    $(".messages").animate({scrollTop:0});
   }
   $("#new_message").on("submit", function(e){
     e.preventDefault();
+    console.log(this)
     var formData = new FormData(this);
     var url = $(this).attr("action")
     $.ajax({
@@ -36,8 +36,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $(".messages").append(html);
-      $(".form__message").val("");
-      $(".form__message")[0].reset();
+      $("#new_message").trigger("reset");
       $(".form__submit").prop("disabled", false);
       scroll()
     })
