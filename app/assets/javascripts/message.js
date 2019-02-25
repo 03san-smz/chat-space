@@ -10,16 +10,14 @@ $(function(){
                     </div>
                   </div>
                   <div class="lower-meesage">
-                    <% if message.content.present? %>
                     <p class="lower-message__content">
                       ${message.content}
                     </p>
-                    <% end %>
-                    <%= image_tag message.image.url, class: "lower-message__image" if message.image.present? %>
                   </div>
                 </div>`
     return html;
   }
+
   function scroll(){
     $(".messages").animate({scrollTop: $(".massage")[0].scrollHeight});
   }
@@ -39,11 +37,14 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $(".messages").append(html);
+      $(".form__message").val("");
       $(".form__message")[0].reset();
+      $(".form__submit").prop("disabled", false);
       scroll()
     })
     .fail(function(){
       alert("error");
+      $(".form__submit").prop("disabled", false);
     })
   })
 })
