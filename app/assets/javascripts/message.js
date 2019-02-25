@@ -40,10 +40,12 @@ $(function(){
       var html = buildHTML(data);
       $(".messages").append(html);
       $(".form__message").val("");
+      $(".form__submit").prop("disabled", false);
       scroll()
     })
     .fail(function(){
       alert("error");
+      $(".form__submit").prop("disabled", false);
     })
   })
 })
