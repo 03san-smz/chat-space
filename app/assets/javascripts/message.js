@@ -35,7 +35,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $(".messages").append(html);
-      $("#new_message").trigger("reset");
+      $("#new_message")[0].reset();
       $(".form__submit").prop("disabled", false);
       scroll()
     })
