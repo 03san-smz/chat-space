@@ -11,7 +11,7 @@ $(document).on("turbolinks:load", function(){
     search_list.append(html);
   }
 
-  function appendNoUser(user){
+  function notMatchUser(user){
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${user}</p>
                 </div>`
@@ -29,10 +29,6 @@ $(document).on("turbolinks:load", function(){
 
   $("#user-search-field").on("keyup", function(){
     var input = $("#user-search-field").val();
-    if(input == ""){
-      $("#user-search-result").empty();
-    }
-    else {
     $.ajax({
       type: "GET",
       url: "/users",
@@ -47,13 +43,12 @@ $(document).on("turbolinks:load", function(){
         });
       }
       else {
-        appendNoUser("一致するユーザーが見つかりません");
+        notMatchUser("一致するユーザーが見つかりません");
       }
     })
     .fail(function(){
       alert("ユーザー検索に失敗しました");
     })
-    }
   });
 
   $("#user-search-result").on("click", ".chat-group-user__btn--add", function(e){
@@ -65,7 +60,6 @@ $(document).on("turbolinks:load", function(){
   });
 
   $("#chat-group-users").on("click", ".js-remove-btn", function(e){
-    console.log();
     $(this).parent().remove();
   });
 });
