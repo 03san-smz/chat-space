@@ -1,7 +1,7 @@
 $(document).on("turbolinks:load", function(){
 
   var search_list = $("#user-search-result");
-  function appendUser(user){
+  function appendSearchUserResult(user){
     var html = `<div id="user-search-result">
                   <div class="chat-group-user js-group-user clearfix">
                     <p class="chat-group-user__name">${user.name}</p>
@@ -35,11 +35,11 @@ $(document).on("turbolinks:load", function(){
       data: {keyword: input},
       dataType: "json"
     })
-    .done(function(data){
+    .done(function(searchUserName){
       $("#user-search-result").empty();
-      if(data.length !== 0){
-        data.forEach(function(user){
-          appendUser(user);
+      if(searchUserName.length !== 0){
+        searchUserName.forEach(function(user){
+          appendSearchUserResult(user);
         });
       }
       else {
