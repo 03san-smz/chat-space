@@ -18,7 +18,7 @@ $(document).on("turbolinks:load", function(){
     return html;
   }
   function scroll(){
-    $(".messages").animate({scrollTop:0});
+    $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},"fast")
   }
   $("#new_message").on("submit", function(e){
     e.preventDefault();
@@ -43,5 +43,28 @@ $(document).on("turbolinks:load", function(){
       alert("error");
       $(".form__submit").prop("disabled", false);
     })
-  })
-})
+  });
+  $(function(){
+      setInterval(update, 5000);
+    });
+  function update(){
+    if($(".messages")[0]){
+      var message_id = $(".messages:last").data("id");
+    } else {
+      var message_id = 0
+    }
+    $.ajax({
+      url: location.href,
+      type: "GET",
+      data: {
+        message: { id: message_id }
+      },
+      dataType: "json"
+    })
+    .always(function(data){
+      $.each(data, function(i, data){
+        buildHTML(data);
+      });
+    });
+  }
+});
