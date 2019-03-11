@@ -3,10 +3,14 @@
   min-height: 100vh;
   .header {
     box-sizing: border-box;
+    background-color: $white;
+    position: fixed;
+    top: 0;
     height: 100px;
+    width: calc(100% - 300px);
     padding: 0 40px;
     border-bottom: solid 1px #EEE;
-
+    z-index: 1;
     .left-header {
       float: left;
       &__headline {
@@ -45,8 +49,11 @@
   .messages {
     box-sizing: border-box;
     background-color: #FAFAFA;
-    height: calc(100% - 100px - 90px);
+    position: fixed;
+    height: calc(100% - 90px);
+    width: calc(100% - 300px);
     padding: 46px 40px 0;
+    overflow: scroll;
     .message {
       .upper-message {
         display: flex;
@@ -71,11 +78,17 @@
       }
     }
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   .form {
     box-sizing: border-box;
     background-color: #DDD;
+    position: fixed;
+    bottom: 0;
     height: 90px;
+    width: calc(100% - 300px);
     padding: 20px 50px 20px 40px;
     &__message {
       width: calc(100% - 150px - 15px);

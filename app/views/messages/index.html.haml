@@ -7,6 +7,7 @@
           = @group.name
         %ul.left-header__members
           %li.member
+            Member：
             - @group.members.each do |members|
               = members.user.name
       .right-header

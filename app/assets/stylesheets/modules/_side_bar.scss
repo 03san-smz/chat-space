@@ -3,11 +3,17 @@
   width: 300px;
   min-height: 100vh;
   color: $white;
+
   .header {
+    box-sizing: border-box;
     background-color: $side_blue_dark;
+    position: fixed;
+    top: 0;
     height: 100px;
+    width: 300px;
     padding: 0 20px;
     line-height: 100px;
+    z-index: 1;
     &__user-name {
       display: inline-block;
       font-size: $side_header;
@@ -27,9 +33,13 @@
   }
 
   .groups {
+    box-sizing: border-box;
     background-color: $side_blue_light;
-    height: calc(100% - 100px);
-    padding: 0 20px;
+    position: fixed;
+    height: 100vh;
+    width: 300px;
+    padding: 100px 20px 0;
+    overflow: scroll;
     .group {
       box-sizing: border-box;
       padding: 20px 0 40px;
@@ -45,5 +55,8 @@
         text-decoration: none ;
       }
     }
+  }
+  ::-webkit-scrollbar {
+    display: none;
   }
 }

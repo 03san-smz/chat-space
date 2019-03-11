@@ -60,3 +60,8 @@ ja:
       not_saved:
         one: "エラーが発生したため %{resource} は保存されませんでした:"
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
+  helpers:
+    submit:
+      create: 登録する
+      submit: 保存する
+      update: 更新する
