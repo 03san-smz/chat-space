@@ -2,8 +2,9 @@ $(function(){
   function buildHTML(message){
     var addImage = '';
     if (message.image) {
-      addImage = `<img class= "lower-message__image" src=${message.image} >`;
+      addImage = `<img class= "lower-message__image" src=${message.image} >` : "";
     }
+
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
