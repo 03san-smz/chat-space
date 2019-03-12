@@ -37,9 +37,9 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $(".messages").append(html);
-      $("#new_message")[0].reset();
       $(".form__submit").prop("disabled", false);
-      scroll()
+      scroll();
+      $("#new_message")[0].reset();
     })
     .fail(function(){
       alert("error");
