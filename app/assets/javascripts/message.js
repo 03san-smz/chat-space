@@ -1,10 +1,5 @@
 $(function(){
   function buildHTML(message){
-    var addImage = '';
-    if (message.image) {
-      addImage = `<img class= "lower-message__image" src=${message.image} >` : "";
-    }
-
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -17,12 +12,15 @@ $(function(){
                   <div class="lower-meesage">
                     <p class="lower-message__content">
                       ${message.content}
-                    </p>
-                    ${addImage}
-                  </div>
-                </div>`
-    return html;
+                    </p>`
+    if (message.image == null){
+      html = $(html).append(`</div></div>`)
+    } else {
+      html = $(html).append(`<img class= "lower-message__image" = " @message.image" ></div></div>`)
+    }
+     return html;
   }
+
   $("#new_message").on("submit", function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -37,6 +35,7 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      console.log(this)      // これは後で削除
       $(".messages").append(html);
       $(".form__submit").prop("disabled", false);
       $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},"fast");
