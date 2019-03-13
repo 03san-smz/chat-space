@@ -46,21 +46,21 @@ $(function(){
       $(".form__submit").prop("disabled", false);
     })
   });
+
   $(function(){
       setInterval(update, 5000);
-    });
+  });
   function update(){
     if($(".messages")[0]){
       var message_id = $(".messages:last").data("id");
+      console.log(this)      // これは後で削除
     } else {
       var message_id = 0
     }
     $.ajax({
       url: location.href,
       type: "GET",
-      data: {
-        message: { id: message_id }
-      },
+      data: { id: message_id },
       dataType: "json"
     })
     .always(function(data){
