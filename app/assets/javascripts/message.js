@@ -1,6 +1,6 @@
 $(function(){
   function buildHTML(message){
-    var image = (message.image_url) ? `<img class= "lower-message__image" src = ${message.image_url} >` : ``
+    var image = (message.image.url) ? `<img class= "lower-message__image" src = ${message.image.url} >` : ``
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -22,7 +22,6 @@ $(function(){
   function scroll(){
     $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},"fast");
   }
-
 // 非同期通信投稿
   $("#new_message").on("submit", function(e){
     e.preventDefault();
@@ -38,7 +37,6 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      console.table(this);      // これは後で削除
       $(".messages").append(html);
       $(".form__submit").prop("disabled", false);
       $("#new_message")[0].reset();
@@ -49,35 +47,33 @@ $(function(){
       $(".form__submit").prop("disabled", false);
     })
   });
-
   // 非同期通信自動更新
   $(function(){
-      setInterval(update, 5000);
+      setInterval(update, 500);
   });
   function update(){
     if($(".messages")[0]){
       var last_message_id = $(".message:last").data("message_id");
-       console.log(this)      // これは後で削除
     } else {
       var last_message_id = 0
     }
     $.ajax({
       url: location.href,
       type: "GET",
-      data: { id: last_message_id },
+      data: {id: last_message_id},
       dataType: "json"
     })
     .done(function(data) {
       if (data.length){
-      $.each(data, function(i, data){
-        var html = buildHTML(data);
-        $('.messages').append(html)
-        // scroll();
+      $.each(data, function(i, massege){
+        var html = buildHTML(massege);
+        $(".messages").append(html);
+        scroll();
       })
     }
   })
     .fail(function(data) {
-      alert('自動更新に失敗しました')
+      alert("自動更新に失敗しました")
     })
   }
 })
