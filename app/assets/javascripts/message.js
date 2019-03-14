@@ -50,7 +50,7 @@ $(function(){
     })
   });
 
-  非同期通信自動更新
+  // 非同期通信自動更新
   $(function(){
       setInterval(update, 5000);
   });
