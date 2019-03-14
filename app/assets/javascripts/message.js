@@ -67,10 +67,17 @@ $(function(){
       data: { id: last_message_id },
       dataType: "json"
     })
-    .always(function(data){
+    .done(function(data) {
+      if (data.length){
       $.each(data, function(i, data){
-        buildHTML(data);
-      });
-    });
+        var html = buildHTML(data);
+        $('.messages').append(html)
+        // scroll();
+      })
+    }
+  })
+    .fail(function(data) {
+      alert('自動更新に失敗しました')
+    })
   }
-});
+})
