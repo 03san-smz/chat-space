@@ -55,7 +55,8 @@ $(function(){
     if($(".messages")[0]){
       var last_message_id = $(".message:last").data("message_id");
     } else {
-      return false
+      var last_message_id = 0
+      console.log(this)      // これは後で削除
     }
     $.ajax({
       url: location.pathname,
@@ -74,7 +75,6 @@ $(function(){
   })
     .fail(function(data) {
       alert("自動更新に失敗しました")
-      var last_message_id = 0
     })
   }
 })
