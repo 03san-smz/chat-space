@@ -49,18 +49,18 @@ $(function(){
   });
   // 非同期通信自動更新
   $(function(){
-      setInterval(update, 500);
+      setInterval(update, 5000);
   });
   function update(){
     if($(".messages")[0]){
       var last_message_id = $(".message:last").data("message_id");
     } else {
-      var last_message_id = 0
+      return false
     }
     $.ajax({
-      url: location.href,
+      url: location.pathname,
       type: "GET",
-      data: {id: last_message_id},
+      data: { id: last_message_id },
       dataType: "json"
     })
     .done(function(data) {
@@ -74,6 +74,7 @@ $(function(){
   })
     .fail(function(data) {
       alert("自動更新に失敗しました")
+      var last_message_id = 0
     })
   }
 })
