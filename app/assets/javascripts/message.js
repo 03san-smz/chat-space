@@ -54,7 +54,6 @@ $(function(){
   function update(){
     if($(".messages")[0]){
       var last_message_id = $(".message:last").data("message_id");
-      console.log(this)      // これは後で削除
     } else {
       return false
     }
